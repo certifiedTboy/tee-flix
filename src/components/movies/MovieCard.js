@@ -36,10 +36,10 @@ const MovieCard = ({ movies }) => {
                 alt={movie.title}
               />
             )}
-            {/* <ImageListItemBar
+            <ImageListItemBar
               title={movie.title}
-              subtitle={<span>{mapGenres(movie.genre_ids, genres)}</span>}
-            /> */}
+              //   subtitle={<span>{mapGenres(movie.genre_ids, genres)}</span>}
+            />
           </Link>
         </ImageListItemStyled>
       ))}
