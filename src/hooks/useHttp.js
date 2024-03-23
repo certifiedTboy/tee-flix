@@ -10,7 +10,6 @@ const useHttp = () => {
   const [totalResults, setTotalResults] = useState(0);
 
   const fetchMovieData = async (url) => {
-    console.log(url);
     setIsLoading(true);
     try {
       const response = await fetch(url, options);
@@ -22,8 +21,6 @@ const useHttp = () => {
       }
 
       setIsLoading(false);
-
-      console.log(data);
 
       if (data?.results.length <= 0) {
         return setHasMore(false);

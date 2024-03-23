@@ -51,7 +51,7 @@ const Movies = () => {
         style={{ overflow: "hidden" }}
         endMessage={<p>Yay! You have seen it all!</p>}
       >
-        <MovieCard movies={movieData} />
+        <MovieCard movies={[...new Set(movieData)]} />
       </InfiniteScroll>
     </div>
   );

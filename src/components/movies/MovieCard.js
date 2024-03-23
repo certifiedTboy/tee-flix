@@ -5,9 +5,10 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-
 import { styled } from "@mui/system";
 import { useTheme } from "@mui/material/styles";
+import { useSelector } from "react-redux";
+import { mapGenres } from "../../helpers/helpers";
 
 const IMAGES_PATH = "https://image.tmdb.org/t/p";
 
@@ -22,12 +23,14 @@ const ImageListItemStyled = styled(ImageListItem)({
 });
 
 const MovieCard = ({ movies }) => {
+  const { genres } = useSelector((state) => state.genreState);
+
   const theme = useTheme();
   const matchDownMd = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <ImageList cols={matchDownMd ? 1 : 5} rowHeight={365} gap={12}>
-      {movies.map((movie) => (
+      {movies?.map((movie) => (
         <ImageListItemStyled key={movie.id}>
           <Link to={`/movie/${movie.id}`}>
             {movie.poster_path && (
@@ -38,7 +41,7 @@ const MovieCard = ({ movies }) => {
             )}
             <ImageListItemBar
               title={movie.title}
-              //   subtitle={<span>{mapGenres(movie.genre_ids, genres)}</span>}
+              subtitle={<span>{mapGenres(movie.genre_ids, genres)}</span>}
             />
           </Link>
         </ImageListItemStyled>

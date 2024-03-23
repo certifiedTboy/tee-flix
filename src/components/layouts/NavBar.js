@@ -1,4 +1,13 @@
+import { useEffect } from "react";
+import { useGetGenresMutation } from "../../lib/apis/generalApis";
+
 const NavBar = () => {
+  const [getGenres] = useGetGenresMutation();
+
+  useEffect(() => {
+    getGenres();
+  }, []);
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
