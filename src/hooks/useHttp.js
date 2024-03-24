@@ -10,6 +10,7 @@ const useHttp = () => {
   const [totalResults, setTotalResults] = useState(0);
 
   const fetchMovieData = async (url, queryType) => {
+    console.log(queryType);
     setIsLoading(true);
     try {
       const response = await fetch(url, options);

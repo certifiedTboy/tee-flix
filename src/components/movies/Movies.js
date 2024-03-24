@@ -34,7 +34,8 @@ const Movies = () => {
   useEffect(() => {
     const loadMore = async () => {
       await fetchMovieData(
-        `${apiBaseUrl}/movie/popular?api_key=${API_KEY}&page=${pageNum}`
+        `${apiBaseUrl}/movie/popular?api_key=${API_KEY}&page=${pageNum}`,
+        "fetch"
       );
     };
 
