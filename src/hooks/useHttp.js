@@ -9,7 +9,7 @@ const useHttp = () => {
   const [hasMore, setHasMore] = useState(true);
   const [totalResults, setTotalResults] = useState(0);
 
-  const fetchMovieData = async (url) => {
+  const fetchMovieData = async (url, queryType) => {
     setIsLoading(true);
     try {
       const response = await fetch(url, options);
@@ -26,7 +26,11 @@ const useHttp = () => {
         return setHasMore(false);
       }
       setTotalResults(data?.total_results);
-      return setMovieData([...movieData, ...data?.results]);
+      if (queryType === "fetch") {
+        return setMovieData([...movieData, ...data?.results]);
+      }
+
+      return setMovieData(data?.results);
     } catch (error) {
       return setErrorMessage("something went wrong");
     }

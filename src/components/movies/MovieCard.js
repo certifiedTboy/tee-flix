@@ -10,7 +10,7 @@ import { useTheme } from "@mui/material/styles";
 import { useSelector } from "react-redux";
 import { mapGenres } from "../../helpers/helpers";
 
-const IMAGES_PATH = "https://image.tmdb.org/t/p";
+const IMAGES_PATH = process.env.REACT_APP_IMAGE_PATH;
 
 const ImgStyled = styled("img")({
   width: "100%",

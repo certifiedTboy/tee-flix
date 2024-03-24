@@ -3,8 +3,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import useHttp from "../../hooks/useHttp";
 import MovieCard from "./MovieCard";
 
-const apiBaseUrl = "https://api.themoviedb.org/3";
-const API_KEY = "45fd9e5defbe418bb8b1195402393501";
+const apiBaseUrl = process.env.REACT_APP_API_URL;
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Movies = () => {
   const [
@@ -20,7 +20,8 @@ const Movies = () => {
 
   useEffect(() => {
     fetchMovieData(
-      `${apiBaseUrl}/movie/popular?api_key=${API_KEY}&page=${pageNum}`
+      `${apiBaseUrl}/movie/popular?api_key=${API_KEY}&page=${pageNum}`,
+      "fetch"
     );
   }, []);
 
@@ -42,7 +43,9 @@ const Movies = () => {
 
   return (
     <div className="movie-list-container">
-      <h1 className="movie-list-title">Movies</h1>
+      <h1 className="movie-list-title" style={{ marginBottom: "50px" }}>
+        Movies
+      </h1>
       <InfiniteScroll
         dataLength={totalResults}
         next={changePageNum}

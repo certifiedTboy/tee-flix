@@ -1,8 +1,11 @@
-const SideBar = () => {
+const SideBar = (props) => {
   return (
     <aside>
       <div className="sidebar">
-        <i className="left-menu-icon fas fa-search"></i>
+        <i
+          className="left-menu-icon fas fa-search"
+          onClick={props.toggleDrawer}
+        ></i>
         <i className="left-menu-icon fas fa-home"></i>
         <i className="left-menu-icon fas fa-users"></i>
         <i className="left-menu-icon fas fa-bookmark"></i>
