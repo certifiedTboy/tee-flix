@@ -46,6 +46,11 @@ body {
   margin-right: 30px;
 }
 
+.menu-list-item a {
+  text-decoration: none;
+  color: #ffd8d8;
+}
+
 .menu-list-item.active {
   font-weight: bold;
 }
@@ -128,26 +133,37 @@ body {
 }
 
 .featured-content {
-  height: 50vh;
+  height: 50%;
   padding: 50px;
-  background: linear-gradient(to bottom, rgba(22, 21, 21, 0), #151515),
-    url("./Assets/f-1.jpg");
 }
 
 .featured-title {
-  width: 200px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
 
 .featured-desc {
   width: 100%;
   color: lightgray;
-  margin: 30px 0;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.movie-title {
+  color: #ffd8d8;
+}
+
+.genre {
+  margin-bottom: 40px;
+  color: #ffd8d8;
 }
 
 .featured-button {
-  background-color: #4dbf00;
+  background-color: #225400;
+  text-decoration: none;
   color: white;
-  padding: 10px 20px;
+  padding: 20px 60px;
   border-radius: 10px;
   border: none;
   outline: none;

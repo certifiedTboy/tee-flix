@@ -44,7 +44,10 @@ const Movies = () => {
 
   return (
     <div className="movie-list-container">
-      <h1 className="movie-list-title" style={{ marginBottom: "50px" }}>
+      <h1
+        className="movie-list-title"
+        style={{ marginBottom: "30px", marginTop: "30px" }}
+      >
         Movies
       </h1>
       <InfiniteScroll

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setMovie } from "../lib/redux/heroMovieSlice";
 
 const options = { method: "GET", headers: { accept: "application/json" } };
 
@@ -9,8 +11,9 @@ const useHttp = () => {
   const [hasMore, setHasMore] = useState(true);
   const [totalResults, setTotalResults] = useState(0);
 
+  const dispatch = useDispatch();
+
   const fetchMovieData = async (url, queryType) => {
-    console.log(queryType);
     setIsLoading(true);
     try {
       const response = await fetch(url, options);
@@ -28,6 +31,7 @@ const useHttp = () => {
       }
       setTotalResults(data?.total_results);
       if (queryType === "fetch") {
+        dispatch(setMovie(data?.results[Math.floor(Math.random() * 10)]));
         return setMovieData([...movieData, ...data?.results]);
       }
 
