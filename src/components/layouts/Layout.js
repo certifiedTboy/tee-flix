@@ -13,10 +13,11 @@ const Layout = () => {
 
     setShowDrawer(false);
   };
+
   return (
     <Fragment>
       <header>
-        <NavBar />
+        <NavBar toggleDrawer={toggleDrawer} />
       </header>
       <aside>
         {" "}

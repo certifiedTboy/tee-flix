@@ -61,7 +61,7 @@ const SearchMovie = (props) => {
 
   const list = (anchor) => (
     <Box
-      sx={{ width: 400 }}
+      sx={{ width: "25%" }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
     >

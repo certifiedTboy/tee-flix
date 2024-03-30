@@ -1,4 +1,9 @@
 const SideBar = (props) => {
+  const scrollBar = (event) => {
+    // console.log(event);
+  };
+
+  window.addEventListener("scroll", scrollBar);
   return (
     <aside>
       <div className="sidebar">

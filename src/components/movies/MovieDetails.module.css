@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.movie_image {
+  height: 100vh;
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.play_icon i {
+  font-size: 100px;
+  color: #ffe7e7;
+  opacity: 0.6;
+  cursor: pointer;
+}

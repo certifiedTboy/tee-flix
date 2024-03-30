@@ -5,6 +5,7 @@
 
 body {
   font-family: "Roboto", sans-serif;
+  background-color: #151515;
 }
 
 .navbar {
@@ -29,6 +30,15 @@ body {
 }
 
 .logo {
+  text-decoration: none;
+}
+
+.search-icon {
+  margin-left: 20px;
+  font-size: 25px;
+}
+
+.logo h1 {
   font-size: 30px;
   color: #4dbf00;
 }
@@ -107,10 +117,10 @@ body {
   background-color: rgba(42, 42, 42, 0.962);
   position: fixed;
   top: 0;
-  display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 60px;
+  display: none;
 }
 
 .left-menu-icon {
@@ -126,10 +136,6 @@ body {
   background-color: #151515;
   min-height: calc(100vh - 50px);
   color: white;
-}
-
-.content-container {
-  margin-left: 50px;
 }
 
 .featured-content {
@@ -295,5 +301,28 @@ body {
 @media only screen and (max-width: 940px) {
   .menu-container {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 888px) {
+  .sidebar {
+    display: flex;
+  }
+  .content-container {
+    margin-left: 50px;
+  }
+
+  .search-icon {
+    display: none;
+  }
+
+  .navbar-container {
+    padding-right: 20px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .logo h1 {
+    font-size: 20px;
   }
 }

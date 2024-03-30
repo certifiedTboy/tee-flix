@@ -26,13 +26,13 @@ const MovieCard = ({ movies }) => {
   const { genres } = useSelector((state) => state.genreState);
 
   const theme = useTheme();
-  const matchDownMd = useMediaQuery(theme.breakpoints.down("sm"));
+  const matchDownMd = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <ImageList cols={matchDownMd ? 1 : 5} rowHeight={365} gap={12}>
       {movies?.map((movie) => (
         <ImageListItemStyled key={movie.id}>
-          <Link to={`/movie/${movie.id}`}>
+          <Link to={`/movies/${movie.id}`}>
             {movie.poster_path && (
               <ImgStyled
                 src={`${IMAGES_PATH}/w300${movie.poster_path}`}
