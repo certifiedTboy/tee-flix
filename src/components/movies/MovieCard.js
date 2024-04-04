@@ -18,7 +18,7 @@ const MovieCard = (props) => {
         />
         <ul className="overlay-btns">
           <li>
-            <Link className="btn details-btn" to={`/movie/${props.id}`}>
+            <Link className="btn details-btn" to={`/movies/${props.id}`}>
               Details
             </Link>
           </li>

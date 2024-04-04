@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useGetSingleMovie from "../../hooks/useGetSingleMovie";
 import { styled } from "@mui/system";
@@ -33,88 +33,83 @@ const MovieDetails = () => {
     return `${hours} ${minutes}`;
   };
 
+  console.log(movieData);
+
   return (
-    <>
-      {/* <div className={classes.container}>
-        <div
-          className={classes.movie_image}
-          style={{
-            background: `linear-gradient(to bottom, rgba(0, 0, 0, 0), #151515),
-              url(${process.env.REACT_APP_IMAGE_PATH}/w300${movieData?.poster_path}) center/cover no-repeat`,
-          }}
-        >
-          <div className={classes.play_icon}>
-            <Link to={`/movie/${movieData?.id}/stream`}>
-              {" "}
-              <i class="fa-solid fa-circle-play"></i>
-            </Link>
-          </div>
+    <Fragment>
+      <header className="page-header movie-details-header">
+        <div className="container">
+          {movieData && (
+            <div className="movie-details">
+              <div className="movie-poster">
+                <img
+                  src={`${process.env.REACT_APP_IMAGE_PATH}/w300${movieData?.poster_path}`}
+                  alt={movieData?.title}
+                />
+              </div>
+              <div className="details-content">
+                {movieData?.production_companies && (
+                  <h5 className="director">
+                    {movieData?.production_companies[0].name}
+                  </h5>
+                )}
+                <h2 className="title">{movieData?.title}</h2>
+                <div className="banner-meta">
+                  <ul>
+                    <li className="vid">
+                      <span className="type">{movieData?.type}</span>
+                      <span className="quality">HD</span>
+                    </li>
+                    <li className="category">
+                      <span>
+                        {movieData && movieData.genres
+                          ? movieData.genres
+                              .map((genre) => genre.name)
+                              .join(", ")
+                          : null}
+                      </span>
+                    </li>
+                    <li className="time">
+                      <span>
+                        <i className="ri-calendar-2-line"></i>
+                        {movieData?.release_date}
+                      </span>
+                      <span>
+                        <i className="ri-time-line"></i>
+                        {formatRuntime(movieData?.runtime)}
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <p className="desc">{movieData?.overview}</p>
+                <a
+                  className="btn watch-btn"
+                  href={`https://www.imdb.com/title/${movieData?.id}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i className="ri-play-fill"></i>
+                  Watch Now
+                </a>
+              </div>
+            </div>
+          )}
         </div>
+      </header>
+
+      <div style={{ textAlign: "center", marginBottom: "20px" }}>
+        <h1 style={{ color: "#fff" }}>Recommended Movies</h1>
+        <p style={{ color: "#e4d804" }}>
+          Because you are interested in {movieData?.title}
+        </p>
       </div>
-      <div className={classes.movie_desc}>
-        <div className={classes.details}>
-          {movieData?.genres && (
-            <>
-              <Typography components="h3" variant="h6">
-                Genres:
-              </Typography>
-              <Typography variant="body1" gutterBottom={true}>
-                {movieData?.genres.map((genre) => genre.name).join(", ")}
-              </Typography>
-            </>
-          )}
-
-          {movieData?.runtime && (
-            <>
-              <Typography components="h3" variant="h6">
-                Duration:
-              </Typography>
-              <Typography variant="body1" gutterBottom={true}>
-                {formatRuntime(movieData?.runtime)}
-              </Typography>
-            </>
-          )}
-
-          {movieData?.release_date && (
-            <>
-              <Typography components="h3" variant="h6">
-                Release Date:
-              </Typography>
-              <Typography variant="body1" gutterBottom={true}>
-                {new Date(movieData?.release_date).toLocaleDateString("en-US", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </Typography>
-            </>
-          )}
-        </div>
-        <div className={classes.overview}>
-          {movieData?.overview && (
-            <>
-              <Typography components="h3" variant="h6">
-                Overview:
-              </Typography>
-              <Typography variant="body1" gutterBottom={true}>
-                {movieData?.overview}
-              </Typography>
-            </>
-          )}
-        </div>
+      <div className="row movies-grid">
+        {movieData &&
+          movieData.recommendations?.results.map((movie) => (
+            <MovieCard {...movie} key={movie.id} />
+          ))}
       </div>
-
-      {movieData?.recommendations && (
-        <>
-          <Typography component="h2" variant="h4" gutterBottom={true}>
-            Recommended
-          </Typography>
-          {movieData?.recommendations && (
-            <MovieCard movies={movieData?.recommendations?.results} />
-          )}
-        </>
-      )} */}
-    </>
+    </Fragment>
   );
 };
 
