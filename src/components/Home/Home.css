@@ -1,0 +1,175 @@
+/* Home Banner Design */
+.home-header {
+  background: url(../../Assets/homeBanner.jpg) no-repeat center center fixed;
+  background-size: cover;
+  min-height: 115vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.home-header .banner-content {
+  max-width: 600px;
+  margin-bottom: 6rem;
+}
+
+.home-header .sub-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #e4d804;
+}
+
+.home-header .title {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 29px;
+  color: #fff;
+}
+
+.home-header .title span {
+  color: #e4d804;
+}
+
+.home-header .btn {
+  user-select: none;
+  -moz-user-select: none;
+  background: #12151e none repeat scroll 0 0;
+  border: 2px solid #e4d804;
+  border-radius: 50px;
+  color: #e3dfdf;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  margin-bottom: 0;
+  padding: 16px 34px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transition: all 0.3s ease 0s;
+  white-space: nowrap;
+  max-width: 220px;
+}
+
+.home-header .btn i {
+  font-weight: normal;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+}
+
+.home-header .btn:hover {
+  background: #e4d804;
+  color: #1e1b29;
+}
+
+/* Top Movies Design */
+.new-sec {
+  padding: 5rem 0;
+}
+.top-rated-sec {
+  background: url(../../Assets/background.jpg) no-repeat center center fixed;
+}
+.section-title {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.section-title .sub-title {
+  line-height: 1;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  position: relative;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  color: #e4d804;
+}
+.section-title .title {
+  color: #fff;
+  margin-top: 0px;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: no;
+  font-size: 2.1rem;
+}
+.top-rated-sec .categories-btns {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.categories-btns .btn {
+  border: none;
+  border-radius: 4px;
+  box-shadow: inset 0px 3px 7px 0px rgb(0 0 0 / 77%);
+  background: #0b1110;
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #cdcaca;
+  padding: 17px 25px;
+  position: relative;
+  margin: 0 7.5px 15px;
+  transition: all 0.5s;
+}
+
+.categories-btns .btn::before,
+.categories-btns .btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 16px;
+  transition: 0.3s linear;
+  opacity: 0;
+}
+
+.categories-btns .btn::after {
+  left: auto;
+  right: 0;
+}
+
+.categories-btns .btn.active {
+  text-shadow: 0px 3px 24px rgb(228 216 4 / 50%);
+  color: #e4d804;
+}
+
+.categories-btns .btn.active::before,
+.categories-btns .btn.active::after {
+  background-color: #e4d804;
+  opacity: 1;
+}
+
+.row.movies-grid {
+  justify-content: flex-start;
+}
+
+.movies-grid .single-movie {
+  width: 23%;
+  min-width: 290px;
+  margin: 0 1% 4rem;
+}
+
+@media (max-width: 1293px) {
+  .movies-grid .single-movie {
+    width: 31%;
+  }
+}
+
+@media (max-width: 960px) {
+  .movies-grid .single-movie {
+    width: 47%;
+  }
+}
+
+@media (max-width: 640px) {
+  .movies-grid .single-movie {
+    width: 100%;
+    margin: 0 0 4rem;
+  }
+}

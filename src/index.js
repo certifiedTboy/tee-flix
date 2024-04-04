@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import reportWebVitals from "./reportWebVitals";
+import "remixicon/fonts/remixicon.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

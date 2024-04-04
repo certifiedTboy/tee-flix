@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Grid, Typography } from "@mui/material";
 // import { GoogleLogin } from "@react-oauth/google";
 import MovieCard from "./MovieCard";
-import classes from "./MovieDetails.module.css";
+
 const GridStyled = styled(Grid)(({ theme }) => ({
   marginBottom: theme.spacing(3),
 }));
@@ -33,11 +33,9 @@ const MovieDetails = () => {
     return `${hours} ${minutes}`;
   };
 
-  // console.log(movieData);
-
   return (
     <>
-      <div className={classes.container}>
+      {/* <div className={classes.container}>
         <div
           className={classes.movie_image}
           style={{
@@ -53,29 +51,8 @@ const MovieDetails = () => {
           </div>
         </div>
       </div>
-      {/* <GridStyled container={true} spacing={2}>
-        <Grid item={true} md={3}>
-          {movieData?.poster_path && (
-            <ImgStyled
-              src={`${process.env.REACT_APP_IMAGE_PATH}/w300${movieData?.poster_path}`}
-              alt={movieData?.title}
-            />
-          )}
-        </Grid>
-        <Grid item={true} md={9}>
-          <Typography component="h1" variant="h3" gutterBottom={true}>
-            {movieData?.title}
-          </Typography>
-          {movieData?.tagline && (
-            <>
-              <Typography components="h3" variant="h6">
-                Tagline:
-              </Typography>
-              <Typography variant="body1" gutterBottom={true}>
-                {movieData?.tagline}
-              </Typography>
-            </>
-          )}
+      <div className={classes.movie_desc}>
+        <div className={classes.details}>
           {movieData?.genres && (
             <>
               <Typography components="h3" variant="h6">
@@ -86,18 +63,7 @@ const MovieDetails = () => {
               </Typography>
             </>
           )}
-          {movieData?.production_countries && (
-            <>
-              <Typography components="h3" variant="h6">
-                Country:
-              </Typography>
-              <Typography variant="body1" gutterBottom={true}>
-                {movieData?.production_countries
-                  .map((country) => country.name)
-                  .join(", ")}
-              </Typography>
-            </>
-          )}
+
           {movieData?.runtime && (
             <>
               <Typography components="h3" variant="h6">
@@ -108,6 +74,7 @@ const MovieDetails = () => {
               </Typography>
             </>
           )}
+
           {movieData?.release_date && (
             <>
               <Typography components="h3" variant="h6">
@@ -122,6 +89,8 @@ const MovieDetails = () => {
               </Typography>
             </>
           )}
+        </div>
+        <div className={classes.overview}>
           {movieData?.overview && (
             <>
               <Typography components="h3" variant="h6">
@@ -130,21 +99,11 @@ const MovieDetails = () => {
               <Typography variant="body1" gutterBottom={true}>
                 {movieData?.overview}
               </Typography>
+            </>
+          )}
+        </div>
+      </div>
 
-              <div style={{ width: "50%", marginTop: "50px" }}>
-                {/* {!user ? (
-                  <GoogleLogin onSuccess={successResponse} />
-                ) : ( */}
-      {/* <Link
-                  to={`/movie/${movieData?.id}/stream`}
-                  className="btn btn-success"
-                >
-                  Stream Movie
-                </Link> */}
-      {/* )} */}
-      {/* </div> */}
-
-      {/* // </GridStyled> */}
       {movieData?.recommendations && (
         <>
           <Typography component="h2" variant="h4" gutterBottom={true}>
@@ -154,7 +113,7 @@ const MovieDetails = () => {
             <MovieCard movies={movieData?.recommendations?.results} />
           )}
         </>
-      )}
+      )} */}
     </>
   );
 };

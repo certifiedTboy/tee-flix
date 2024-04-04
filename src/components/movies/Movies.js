@@ -43,24 +43,28 @@ const Movies = () => {
   }, [pageNum]);
 
   return (
-    <div className="movie-list-container">
-      <h1
-        className="movie-list-title"
-        style={{ marginBottom: "30px", marginTop: "30px" }}
-      >
-        Movies
-      </h1>
-      <InfiniteScroll
-        dataLength={totalResults}
-        next={changePageNum}
-        hasMore={hasMore}
-        loader={<p> Please Wait </p>}
-        style={{ overflow: "hidden" }}
-        endMessage={<p>Yay! You have seen it all!</p>}
-      >
-        <MovieCard movies={[...new Set(movieData)]} />
-      </InfiniteScroll>
-    </div>
+    <section className="new-sec top-rated-sec" id="movies">
+      <div className="container">
+        <div className="section-title">
+          <h5 className="sub-title">ONLINE STREAMING</h5>
+          <h2 className="title">Top Rated Movies</h2>
+        </div>
+
+        <InfiniteScroll
+          dataLength={totalResults}
+          next={changePageNum}
+          hasMore={hasMore}
+          loader={<p> Please Wait </p>}
+          style={{ overflow: "hidden" }}
+          endMessage={<p>Yay! You have seen it all!</p>}
+        >
+          <div className="row movies-grid">
+            {movieData?.length > 0 &&
+              movieData.map((movie) => <MovieCard {...movie} key={movie.id} />)}
+          </div>
+        </InfiniteScroll>
+      </div>
+    </section>
   );
 };
 
