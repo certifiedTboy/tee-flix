@@ -46,7 +46,7 @@ const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
             onClick={() => setCurrentPage((prev) => prev + 1)}
           >
             Next
-            <i className="fas fa-angle-left"></i>
+            <i className="fas fa-angle-right"></i>
           </button>
         </li>
       </ul>

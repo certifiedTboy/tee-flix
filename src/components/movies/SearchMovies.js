@@ -1,28 +1,15 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import useHttp from "../../hooks/useHttp";
-import MovieCard from "./MovieCard";
 
 const SearchMovies = ({ showSearch, setShowSearch, setCurrentPage }) => {
   const [searchQuery, setSearchQuery] = useState("");
-
-  // use http custom hook to run search query
-  //   const [getMovieData, movieData] = useHttp();
-
-  // search movie function
-  //   const onSearchMovieData = async () => {
-  //     await getMovieData(
-  //       `${process.env.REACT_APP_API_URL}/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${searchQuery}`,
-  //       "search"
-  //     );
-  //   };
 
   const searchPage = useNavigate();
 
   const sendSearchQuery = (e) => {
     e.preventDefault();
     if (searchQuery === "") {
-      alert("Please enter a search query");
+      return;
     } else {
       searchPage(`/search/${searchQuery}`);
       setShowSearch(false);

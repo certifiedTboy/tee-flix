@@ -4,11 +4,13 @@ import SingleMovieScreen from "../../screens/SingleMovieScreen";
 import HomeScreen from "../../screens/HomeScreen";
 import SearchResultScreen from "../../screens/SearchResultScreen";
 import TopratedMovies from "../Home/TopratedMovies";
+import ErrorScreen from "../../screens/ErrorScreen";
 import Movies from "../movies/Movies";
 
 const AppRoutes = () => {
   return (
     <Routes>
+      <Route path="*" element={<ErrorScreen />} />
       <Route path="/" element={<Navigate to="/home" replace={true} />} exact />
       <Route path="/" element={<HomeScreen />}>
         <Route path="home" element={<TopratedMovies />} />

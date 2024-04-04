@@ -27,7 +27,7 @@ const MovieCard = (props) => {
       <div className="movie-content">
         <div className="top row">
           <h5 className="title">
-            <Link className="link" to={`/movie/${props.id}`}>
+            <Link className="link" to={`/movies/${props.id}`}>
               {props.title.length > 20
                 ? props.title.split("").slice(0, 20).join("") + "..."
                 : props.title}

@@ -8,8 +8,16 @@ import "./Search.css";
 
 const SearchResult = () => {
   const [currentPage, setCurrentPage] = useState(1);
+
+  const [recordsPerPage] = useState(8);
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+
+  let currentRecords;
+  let nPages;
+
   // use http custom hook to run search query
-  const [getMovieData, movieData] = useHttp();
+  const [getMovieData, movieData, errorMessage, isLoading] = useHttp();
 
   const params = useParams();
 
@@ -27,6 +35,16 @@ const SearchResult = () => {
     onSearchMovieData();
   }, [searchQuery]);
 
+  if (!errorMessage && movieData?.length > 0) {
+    currentRecords = movieData.slice(indexOfFirstRecord, indexOfLastRecord);
+    nPages = Math.ceil(movieData.length / recordsPerPage);
+  } else {
+    currentRecords = [];
+    nPages = [];
+  }
+
+  console.log(currentRecords);
+
   return (
     <section className="results-sec">
       <div className="container">
@@ -35,26 +53,21 @@ const SearchResult = () => {
           <h2 className="title">{searchQuery}'s Related Results</h2>
         </div>
         <div className="row movies-grid">
-          {movieData.length ? (
-            movieData.map((movie) => (
-              <MovieCard
-                {...movie}
-                key={movie.imdbID}
-                // setWatchList={setWatchList}
-                // watchList={watchList}
-              />
+          {currentRecords.length > 0 ? (
+            currentRecords.map((movie) => (
+              <MovieCard {...movie} key={movie.id} />
             ))
           ) : (
             <NoSearchResult />
           )}
         </div>
-        {/* {totalPages > 1 && ( */}
-        <Pagination
-          totalPages={3}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
-        {/* )} */}
+        {movieData?.length > 1 && (
+          <Pagination
+            totalPages={nPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+        )}
       </div>
     </section>
   );
