@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { mapGenres } from "../../helpers/helpers";
-import { useEffect } from "react";
 import "./Movie.css";
 
 const IMAGES_PATH = process.env.REACT_APP_IMAGE_PATH;
@@ -14,7 +13,7 @@ const MovieCard = (props) => {
       <div className="movie-poster">
         <img
           src={`${IMAGES_PATH}/w300${props.poster_path}`}
-          alt="movie-poster"
+          alt={`${props.title} poster image`}
         />
         <ul className="overlay-btns">
           <li>

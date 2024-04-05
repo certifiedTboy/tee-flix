@@ -26,7 +26,7 @@ const TopratedMovies = () => {
     <section className="new-sec top-rated-sec" id="movies">
       <div className="container">
         <div className="section-title">
-          <h5 className="sub-title">ONLINE STREAMING</h5>
+          <h5 className="sub-title">AVAILABLE FOR ONLINE STREAMING</h5>
           <h2 className="title">Top Rated Movies</h2>
         </div>
 

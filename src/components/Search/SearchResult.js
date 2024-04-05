@@ -43,8 +43,6 @@ const SearchResult = () => {
     nPages = [];
   }
 
-  console.log(currentRecords);
-
   return (
     <section className="results-sec">
       <div className="container">

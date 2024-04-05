@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useGetGenresMutation } from "../../lib/apis/generalApis";
+import logo from "../../Assets/logo.png";
 
 const NavBar = ({ setShowSearch, watchList }) => {
   const [getGenres] = useGetGenresMutation();
@@ -65,7 +66,7 @@ const NavBar = ({ setShowSearch, watchList }) => {
         <div className="row">
           <div className="navbar-brand">
             <Link className="navbar-item link" to="/">
-              <img src={""} alt="Movflx" className="logo" />
+              <img src={logo} alt="teeflix_logo" className="logo" />
             </Link>
           </div>
           <ul
