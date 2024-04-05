@@ -10,7 +10,7 @@ const HomeHero = () => {
           <h2 className="title">
             Unlimited {<span>Movie</span>} , TVs Shows, & More.
           </h2>
-          <Link className="btn" to="/#Movies">
+          <Link className="btn" to="/movies">
             <i className="ri-arrow-right-line"></i>
             Explore Movies
           </Link>

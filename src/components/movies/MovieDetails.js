@@ -33,8 +33,6 @@ const MovieDetails = () => {
     return `${hours} ${minutes}`;
   };
 
-  console.log(movieData);
-
   return (
     <Fragment>
       <header className="page-header movie-details-header">
@@ -82,15 +80,13 @@ const MovieDetails = () => {
                   </ul>
                 </div>
                 <p className="desc">{movieData?.overview}</p>
-                <a
+                <Link
                   className="btn watch-btn"
-                  href={`https://www.imdb.com/title/${movieData?.id}`}
-                  target="_blank"
-                  rel="noreferrer"
+                  to={`/movies/${movieData?.id}/stream`}
                 >
                   <i className="ri-play-fill"></i>
                   Watch Now
-                </a>
+                </Link>
               </div>
             </div>
           )}

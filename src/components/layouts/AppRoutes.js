@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import SingleMovieScreen from "../../screens/SingleMovieScreen";
 import HomeScreen from "../../screens/HomeScreen";
 import SearchResultScreen from "../../screens/SearchResultScreen";
+import StreamingScreen from "../../screens/StreamingScreen";
 import TopratedMovies from "../Home/TopratedMovies";
 import ErrorScreen from "../../screens/ErrorScreen";
 import Movies from "../movies/Movies";
@@ -19,6 +20,7 @@ const AppRoutes = () => {
 
       <Route path="/movies/:movieId" element={<SingleMovieScreen />} />
       <Route path="/search/:searchQuery" element={<SearchResultScreen />} />
+      <Route path="/movies/:movieId/stream" element={<StreamingScreen />} />
     </Routes>
   );
 };
