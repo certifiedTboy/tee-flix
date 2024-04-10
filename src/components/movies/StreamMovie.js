@@ -6,11 +6,14 @@ const StreaMovie = () => {
   const { movieId } = params;
 
   return (
-    <iframe
-      width="100%"
-      height="700px"
-      src={`https://vidsrc.xyz/embed/movie/${movieId}`}
-    ></iframe>
+    <div className="stream-container">
+      {" "}
+      <iframe
+        width="100%"
+        height="600px"
+        src={`https://vidsrc.xyz/embed/movie/${movieId}`}
+      ></iframe>
+    </div>
   );
 };
 

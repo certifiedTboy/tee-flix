@@ -10,11 +10,11 @@ const StreamSeries = () => {
     <div className="stream-container">
       <iframe
         width="100%"
-        height="100vh"
-        src={`https://vidsrc.pro/embed/tv/ssss/1/1`}
+        height="600px"
+        src={`https://vidsrc.pro/embed/tv/${seriesId}/1/1`}
       ></iframe>
 
-      <div>
+      <div className="selection">
         <div>
           <select>
             <option> Seasons </option>
