@@ -2,15 +2,20 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setMovie } from "../lib/redux/heroMovieSlice";
 
-const options = { method: "GET", headers: { accept: "application/json" } };
+const options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`,
+  },
+};
 
-const useHttp = () => {
+export default () => {
   const [movieData, setMovieData] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const [totalResults, setTotalResults] = useState(0);
-  const [totalPages, setTotalPages] = useState();
 
   const dispatch = useDispatch();
 
@@ -36,7 +41,6 @@ const useHttp = () => {
         return setMovieData([...movieData, ...data?.results]);
       }
 
-      setTotalPages(data?.total_pages);
       return setMovieData(data?.results);
     } catch (error) {
       return setErrorMessage("something went wrong");
@@ -50,8 +54,5 @@ const useHttp = () => {
     isLoading,
     hasMore,
     totalResults,
-    totalPages,
   ];
 };
-
-export default useHttp;

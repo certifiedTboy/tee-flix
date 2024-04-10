@@ -1,12 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { mapGenres } from "../../helpers/helpers";
-import "./Movie.css";
 
 const IMAGES_PATH = process.env.REACT_APP_IMAGE_PATH;
 
 const MovieCard = (props) => {
   const { genres } = useSelector((state) => state.genreState);
+
+  const location = useLocation();
 
   return (
     <div className="single-movie">
@@ -17,7 +18,17 @@ const MovieCard = (props) => {
         />
         <ul className="overlay-btns">
           <li>
-            <Link className="btn details-btn" to={`/movies/${props.id}`}>
+            <Link
+              className="btn details-btn"
+              to={`/${
+                location.pathname === "/movies" ||
+                location.pathname.split("/")[1] === "movies" ||
+                location.pathname === "/home" ||
+                props.filterCtg === "movies"
+                  ? "movies"
+                  : "series"
+              }/${props.id}`}
+            >
               Details
             </Link>
           </li>
@@ -27,7 +38,7 @@ const MovieCard = (props) => {
         <div className="top row">
           <h5 className="title">
             <Link className="link" to={`/movies/${props.id}`}>
-              {props.title.length > 20
+              {props?.title?.length > 20
                 ? props.title.split("").slice(0, 20).join("") + "..."
                 : props.title}
             </Link>

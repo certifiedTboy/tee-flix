@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import useHttp from "../../hooks/useHttp";
+import useGetSeriesMovie from "../../hooks/useGetSeriesMovie";
 import MovieCard from "../Commons/MovieCard";
-import "./Movie.css";
 
 const apiBaseUrl = process.env.REACT_APP_API_URL;
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-const Movies = () => {
+const Series = () => {
   const [
     fetchMovieData,
     movieData,
@@ -15,19 +14,19 @@ const Movies = () => {
     isLoading,
     hasMore,
     totalResults,
-  ] = useHttp();
+  ] = useGetSeriesMovie();
 
   const [pageNum, setPageNum] = useState(1);
 
-  const loadMovies = async () => {
+  const loadMovie = async () => {
     await fetchMovieData(
-      `${apiBaseUrl}/movie/popular?api_key=${API_KEY}&page=${pageNum}`,
+      `${apiBaseUrl}/tv/popular?language=en-US&page=${pageNum}`,
       "fetch"
     );
   };
 
   useEffect(() => {
-    loadMovies();
+    loadMovie();
   }, []);
 
   const changePageNum = () => {
@@ -37,7 +36,7 @@ const Movies = () => {
   };
 
   useEffect(() => {
-    loadMovies();
+    loadMovie();
   }, [pageNum]);
 
   return (
@@ -45,7 +44,7 @@ const Movies = () => {
       <div className="container">
         <div className="section-title">
           <h5 className="sub-title">AVAILABLE FOR ONLINE STREAMING</h5>
-          <h2 className="title">Most Recent Movies</h2>
+          <h2 className="title">Most Recent Tv Shows / Series</h2>
         </div>
 
         <InfiniteScroll
@@ -66,4 +65,4 @@ const Movies = () => {
   );
 };
 
-export default Movies;
+export default Series;

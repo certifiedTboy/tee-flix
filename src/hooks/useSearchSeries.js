@@ -9,28 +9,31 @@ const options = {
 };
 
 export default () => {
-  const [movieData, setMovieData] = useState({});
+  const [movieData, setMovieData] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [totalPages, setTotalPages] = useState(0);
 
-  const getMovieDetails = async (url) => {
+  const fetchMovieData = async (url) => {
     setIsLoading(true);
     try {
       const response = await fetch(url, options);
-
       const data = await response.json();
 
       if (!response.ok) {
         setIsLoading(false);
         return setErrorMessage("something went wrong");
       }
+
       setIsLoading(false);
-      return setMovieData(data);
+
+      setTotalPages(data?.total_pages);
+
+      return setMovieData(data?.results);
     } catch (error) {
-      setIsLoading(false);
       return setErrorMessage("something went wrong");
     }
   };
 
-  return [getMovieDetails, movieData, errorMessage, isLoading];
+  return [fetchMovieData, movieData || [], errorMessage, isLoading, totalPages];
 };

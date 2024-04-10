@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import MovieCard from "../movies/MovieCard";
+import MovieCard from "../Commons/MovieCard";
 import useHttp from "../../hooks/useHttp";
 
 const TopratedMovies = () => {

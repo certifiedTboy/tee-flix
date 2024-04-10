@@ -1,7 +1,7 @@
 import StreaMovie from "../components/movies/StreamMovie";
 
-const StreamingScreen = () => {
+const StreamingMovieScreen = () => {
   return <StreaMovie />;
 };
 
-export default StreamingScreen;
+export default StreamingMovieScreen;

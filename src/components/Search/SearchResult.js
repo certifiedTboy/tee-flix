@@ -1,47 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
-import useHttp from "../../hooks/useHttp";
-import Pagination from "../Commons/Pagination";
-import MovieCard from "../movies/MovieCard";
-import NoSearchResult from "./NoSearchResult";
+import MovieResults from "./MovieResults";
+import SeriesResults from "./SeriesResults";
 import "./Search.css";
 
 const SearchResult = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const [recordsPerPage] = useState(8);
-  const indexOfLastRecord = currentPage * recordsPerPage;
-  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-
-  let currentRecords;
-  let nPages;
-
-  // use http custom hook to run search query
-  const [getMovieData, movieData, errorMessage, isLoading] = useHttp();
+  const [filterCtg, setFilterCtg] = useState("movies");
 
   const params = useParams();
 
   const { searchQuery } = params;
-
-  // search movie function
-  const onSearchMovieData = async () => {
-    await getMovieData(
-      `${process.env.REACT_APP_API_URL}/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${searchQuery}`,
-      "search"
-    );
-  };
-
-  useEffect(() => {
-    onSearchMovieData();
-  }, [searchQuery]);
-
-  if (!errorMessage && movieData?.length > 0) {
-    currentRecords = movieData.slice(indexOfFirstRecord, indexOfLastRecord);
-    nPages = Math.ceil(movieData.length / recordsPerPage);
-  } else {
-    currentRecords = [];
-    nPages = [];
-  }
 
   return (
     <section className="results-sec">
@@ -50,22 +18,35 @@ const SearchResult = () => {
           <h5 className="sub-title">ONLINE STREAMING</h5>
           <h2 className="title">{searchQuery}'s Related Results</h2>
         </div>
-        <div className="row movies-grid">
-          {currentRecords.length > 0 ? (
-            currentRecords.map((movie) => (
-              <MovieCard {...movie} key={movie.id} />
-            ))
-          ) : (
-            <NoSearchResult />
-          )}
+
+        <div
+          className="btns-div categories-btns"
+          style={{ textAlign: "center" }}
+        >
+          <button
+            className={
+              filterCtg === "movies"
+                ? "btn category-btn active"
+                : "btn category-btn"
+            }
+            onClick={() => setFilterCtg("movies")}
+          >
+            Movies Result
+          </button>
+          <button
+            className={
+              filterCtg === "series"
+                ? "btn category-btn active"
+                : "btn category-btn"
+            }
+            onClick={() => setFilterCtg("series")}
+          >
+            Series / Tv Results
+          </button>
         </div>
-        {movieData?.length > 1 && (
-          <Pagination
-            totalPages={nPages}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          />
-        )}
+
+        {filterCtg === "movies" && <MovieResults filterCtg={filterCtg} />}
+        {filterCtg === "series" && <SeriesResults filterCtg={filterCtg} />}
       </div>
     </section>
   );

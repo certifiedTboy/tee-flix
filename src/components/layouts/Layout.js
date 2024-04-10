@@ -17,8 +17,6 @@ const Layout = () => {
 
   let titleData;
 
-  console.log(pathname.split("/")[2]);
-
   if (pathname === "/home" || pathname === "/") {
     titleData = {
       title: "Tee Flix - Home",
@@ -30,10 +28,20 @@ const Layout = () => {
       title: `Tee Flix - Movies`,
       metaDescription: `All latest movies available for streaming on tee flix streaming platform`,
     };
+  } else if (pathname === `/series`) {
+    titleData = {
+      title: `Tee Flix - Series and tv shows`,
+      metaDescription: `All latest Series and tv shows available for streaming on tee flix streaming platform`,
+    };
   } else if (pathname === `/movies/${pathname.split("/")[2]}`) {
     titleData = {
       title: `Tee Flix - ${pathname.split("/")[2]}`,
       metaDescription: `All latest movies available for streaming on tee flix streaming platform`,
+    };
+  } else if (pathname === `/series/${pathname.split("/")[2]}`) {
+    titleData = {
+      title: `Tee Flix - ${pathname.split("/")[2]}`,
+      metaDescription: `All latest series available for streaming on tee flix streaming platform`,
     };
   } else if (pathname === `/search/${pathname.split("/")[2]}`) {
     titleData = {
@@ -41,6 +49,11 @@ const Layout = () => {
       metaDescription: `${pathname.split("/")[2]}`,
     };
   } else if (pathname === `/movies/${pathname.split("/")[2]}/stream`) {
+    titleData = {
+      title: `Tee Flix - streaming`,
+      metaDescription: `streaming ${pathname.split("/")[2]}`,
+    };
+  } else if (pathname === `/series/${pathname.split("/")[2]}/stream`) {
     titleData = {
       title: `Tee Flix - streaming`,
       metaDescription: `streaming ${pathname.split("/")[2]}`,
@@ -67,7 +80,9 @@ const Layout = () => {
       <main>
         <AppRoutes />
       </main>
-      <footer>{pathname !== "/movies" && <Footer />}</footer>
+      <footer>
+        {pathname !== "/movies" || (pathname !== "/series" && <Footer />)}
+      </footer>
     </Fragment>
   );
 };
