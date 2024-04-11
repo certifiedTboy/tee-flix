@@ -1,37 +1,109 @@
+import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-import SingleMovieScreen from "../../screens/SingleMovieScreen";
-import SingleSeriesScreen from "../../screens/SingleSeriesScreen";
-import HomeScreen from "../../screens/HomeScreen";
-import SearchResultScreen from "../../screens/SearchResultScreen";
-import StreamingMovieScreen from "../../screens/StreamingMovieScreen";
-import StreamingSeriesScreen from "../../screens/StreamingSeriesScreen";
-import TopratedMovies from "../Home/TopratedMovies";
-import ErrorScreen from "../../screens/ErrorScreen";
-import Movies from "../movies/Movies";
-import Series from "../Series/Series";
+
+const ErrorScreen = lazy(() => import("../../screens/ErrorScreen"));
+const SingleMovieScreen = lazy(() => import("../../screens/SingleMovieScreen"));
+const SingleSeriesScreen = lazy(() =>
+  import("../../screens/SingleSeriesScreen")
+);
+const HomeScreen = lazy(() => import("../../screens/HomeScreen"));
+const SearchResultScreen = lazy(() =>
+  import("../../screens/SearchResultScreen")
+);
+const StreamingMovieScreen = lazy(() =>
+  import("../../screens/StreamingMovieScreen")
+);
+const StreamingSeriesScreen = lazy(() =>
+  import("../../screens/StreamingSeriesScreen")
+);
+const TopratedMovies = lazy(() => import("../Home/TopratedMovies"));
+const Movies = lazy(() => import("../movies/Movies"));
+const Series = lazy(() => import("../Series/Series"));
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="*" element={<ErrorScreen />} />
       <Route path="/" element={<Navigate to="/home" replace={true} />} exact />
-      <Route path="/" element={<HomeScreen />}>
-        <Route path="home" element={<TopratedMovies />} />
-        <Route path="movies" element={<Movies />} />
-        <Route path="series" element={<Series />} />
+      <Route
+        path="/"
+        element={
+          <Suspense fallback={<></>}>
+            {" "}
+            <HomeScreen />{" "}
+          </Suspense>
+        }
+      >
+        <Route
+          path="home"
+          element={
+            <Suspense fallback={<></>}>
+              <TopratedMovies />
+            </Suspense>
+          }
+        />
+        <Route
+          path="movies"
+          element={
+            <Suspense fallback={<></>}>
+              <Movies />
+            </Suspense>
+          }
+        />
+        <Route
+          path="series"
+          element={
+            <Suspense fallback={<></>}>
+              {" "}
+              <Series />
+            </Suspense>
+          }
+        />
       </Route>
 
-      <Route path="/movies/:movieId" element={<SingleMovieScreen />} />
-      <Route path="/series/:seriesId" element={<SingleSeriesScreen />} />
-      <Route path="/search/:searchQuery" element={<SearchResultScreen />} />
+      <Route
+        path="/movies/:movieId"
+        element={
+          <Suspense fallback={<></>}>
+            {" "}
+            <SingleMovieScreen />{" "}
+          </Suspense>
+        }
+      />
+      <Route
+        path="/series/:seriesId"
+        element={
+          <Suspense fallback={<></>}>
+            {" "}
+            <SingleSeriesScreen />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/search/:searchQuery"
+        element={
+          <Suspense fallback={<></>}>
+            {" "}
+            <SearchResultScreen />{" "}
+          </Suspense>
+        }
+      />
       <Route
         path="/movies/:movieId/stream"
-        element={<StreamingMovieScreen />}
+        element={
+          <Suspense fallback={<></>}>
+            <StreamingMovieScreen />
+          </Suspense>
+        }
       />
       <Route
         path="/series/:seriesId/stream"
-        element={<StreamingSeriesScreen />}
+        element={
+          <Suspense fallback={<></>}>
+            <StreamingSeriesScreen />
+          </Suspense>
+        }
       />
     </Routes>
   );
