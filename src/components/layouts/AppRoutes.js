@@ -1,6 +1,9 @@
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import TopratedMovies from "../Home/TopratedMovies";
+import Series from "../Series/Series";
+import Movies from "../movies/Movies";
 
 const ErrorScreen = lazy(() => import("../../screens/ErrorScreen"));
 const SingleMovieScreen = lazy(() => import("../../screens/SingleMovieScreen"));
@@ -17,9 +20,6 @@ const StreamingMovieScreen = lazy(() =>
 const StreamingSeriesScreen = lazy(() =>
   import("../../screens/StreamingSeriesScreen")
 );
-const TopratedMovies = lazy(() => import("../Home/TopratedMovies"));
-const Movies = lazy(() => import("../movies/Movies"));
-const Series = lazy(() => import("../Series/Series"));
 
 const AppRoutes = () => {
   return (
@@ -35,31 +35,9 @@ const AppRoutes = () => {
           </Suspense>
         }
       >
-        <Route
-          path="home"
-          element={
-            <Suspense fallback={<></>}>
-              <TopratedMovies />
-            </Suspense>
-          }
-        />
-        <Route
-          path="movies"
-          element={
-            <Suspense fallback={<></>}>
-              <Movies />
-            </Suspense>
-          }
-        />
-        <Route
-          path="series"
-          element={
-            <Suspense fallback={<></>}>
-              {" "}
-              <Series />
-            </Suspense>
-          }
-        />
+        <Route path="home" element={<TopratedMovies />} />
+        <Route path="movies" element={<Movies />} />
+        <Route path="series" element={<Series />} />
       </Route>
 
       <Route
