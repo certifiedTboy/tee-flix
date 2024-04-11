@@ -18,7 +18,7 @@ const MovieCard = (props) => {
               ? `${IMAGES_PATH}/w300${props.poster_path}`
               : "https://via.placeholder.com/92x138.png?text=No+Cover"
           }
-          alt={`${props.title} poster image`}
+          alt={`${props.title} poster img`}
         />
         <ul className="overlay-btns">
           <li>
@@ -42,12 +42,18 @@ const MovieCard = (props) => {
         <div className="top row">
           <h5 className="title">
             <Link className="link" to={`/movies/${props.id}`}>
-              {props?.title?.length > 20
-                ? props.title.split("").slice(0, 20).join("") + "..."
-                : props.title}
+              {props?.title
+                ? props?.title?.length > 20
+                  ? props.title.split("").slice(0, 20).join("") + "..."
+                  : props.title
+                : props?.name?.length > 20
+                ? props.name.split("").slice(0, 20).join("") + "..."
+                : props.name}
             </Link>
           </h5>
-          <h6 className="year">{props.release_date}</h6>
+          <h6 className="year">
+            {props.release_date ? props?.release_date : props?.first_air_date}
+          </h6>
         </div>
         <div className="bottom row">
           <span className="quality">HD</span>
