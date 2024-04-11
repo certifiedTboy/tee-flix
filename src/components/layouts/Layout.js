@@ -5,9 +5,10 @@ import AppRoutes from "./AppRoutes";
 import Footer from "./Footer";
 import { SEO } from "../../helpers/SEO";
 import SearchMovies from "../movies/SearchMovies";
+import BackToTop from "../Commons/BackToTop";
 import "./Layout.css";
 
-const Layout = () => {
+const Layout = ({ scrollTop }) => {
   const location = useLocation();
 
   const { pathname } = location;
@@ -83,6 +84,8 @@ const Layout = () => {
       <footer>
         {pathname !== "/movies" || (pathname !== "/series" && <Footer />)}
       </footer>
+
+      <BackToTop scrollTop={scrollTop} />
     </Fragment>
   );
 };

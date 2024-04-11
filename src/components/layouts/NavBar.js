@@ -62,7 +62,7 @@ const NavBar = ({ setShowSearch, watchList }) => {
 
   return (
     <nav className={sticky ? "navbar sticky" : "navbar"}>
-      <div className="container">
+      <div className="container intro">
         <div className="row">
           <div className="navbar-brand">
             <Link className="navbar-item link" to="/">
