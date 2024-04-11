@@ -13,7 +13,11 @@ const MovieCard = (props) => {
     <div className="single-movie">
       <div className="movie-poster">
         <img
-          src={`${IMAGES_PATH}/w300${props.poster_path}`}
+          src={
+            props?.poster_path
+              ? `${IMAGES_PATH}/w300${props.poster_path}`
+              : "https://via.placeholder.com/92x138.png?text=No+Cover"
+          }
           alt={`${props.title} poster image`}
         />
         <ul className="overlay-btns">
