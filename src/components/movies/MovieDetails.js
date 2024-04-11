@@ -19,7 +19,7 @@ const MovieDetails = () => {
 
   return (
     <Fragment>
-      <header className="page-header movie-details-header">
+      <header className="page-header movie-details-header intro">
         <div className="container">
           {movieData && (
             <div className="movie-details">

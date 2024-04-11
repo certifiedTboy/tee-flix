@@ -16,7 +16,7 @@ const BackToTop = ({ scrollTop }) => {
       ignoreCancelEvents={false}
       spyThrottle={500}
     >
-      <i class="fa fa-chevron-up"></i>
+      <i className="fa fa-chevron-up"></i>
     </Link>
   );
 };

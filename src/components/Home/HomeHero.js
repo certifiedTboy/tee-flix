@@ -3,7 +3,7 @@ import "./Home.css";
 
 const HomeHero = () => {
   return (
-    <header className="page-header home-header">
+    <header className="page-header home-header intro">
       <div className="container">
         <div className="banner-content">
           <h4 className="sub-title">TeeFlix</h4>
