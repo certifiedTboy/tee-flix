@@ -28,8 +28,6 @@ export default () => {
 
       setIsLoading(false);
 
-      console.log(data?.results.length);
-
       if (data?.results.length <= 0) {
         return setHasMore(false);
       }
