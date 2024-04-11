@@ -15,33 +15,28 @@ const StreamSeries = () => {
       <iframe
         width="100%"
         height="600px"
-        src={`https://vidsrc.pro/embed/tv/wssgsgsgs/${season}/${episode}`}
+        src={`https://vidsrc.pro/embed/tv/${seriesId}/${season}/${episode}`}
       ></iframe>
 
       <div className="selection">
-        <div>
-          <label htmlFor="season">
-            {" "}
-            Season
-            <input
-              type="number"
-              min={1}
-              value={season}
-              onChange={(event) => setSeason(event.target.value)}
-            />
-          </label>
+        <div className="season">
+          <label htmlFor="season"> Season:</label>
+          <input
+            type="number"
+            min={1}
+            value={season}
+            onChange={(event) => setSeason(event.target.value)}
+          />
         </div>
 
-        <div>
-          <label htmlFor="episode">
-            Episode
-            <input
-              type="number"
-              min={1}
-              value={episode}
-              onChange={(event) => setEpisode(event.target.value)}
-            />
-          </label>
+        <div className="episode">
+          <label htmlFor="episode">Episode:</label>
+          <input
+            type="number"
+            min={1}
+            value={episode}
+            onChange={(event) => setEpisode(event.target.value)}
+          />
         </div>
       </div>
     </div>

@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setMovie } from "../lib/redux/heroMovieSlice";
 
 const options = {
   method: "GET",
@@ -17,9 +15,7 @@ export default () => {
   const [hasMore, setHasMore] = useState(true);
   const [totalResults, setTotalResults] = useState(0);
 
-  const dispatch = useDispatch();
-
-  const fetchMovieData = async (url, queryType) => {
+  const fetchMovieData = async (url) => {
     setIsLoading(true);
     try {
       const response = await fetch(url, options);
@@ -32,16 +28,14 @@ export default () => {
 
       setIsLoading(false);
 
+      console.log(data?.results.length);
+
       if (data?.results.length <= 0) {
         return setHasMore(false);
       }
       setTotalResults(data?.total_results);
-      if (queryType === "fetch") {
-        dispatch(setMovie(data?.results[Math.floor(Math.random() * 10)]));
-        return setMovieData([...movieData, ...data?.results]);
-      }
 
-      return setMovieData(data?.results);
+      return setMovieData([...movieData, ...data?.results]);
     } catch (error) {
       return setErrorMessage("something went wrong");
     }
@@ -49,7 +43,7 @@ export default () => {
 
   return [
     fetchMovieData,
-    movieData || [],
+    movieData,
     errorMessage,
     isLoading,
     hasMore,

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import useHttp from "../../hooks/useHttp";
 import MovieCard from "../Commons/MovieCard";
+import Loader from "../Commons/Loader";
 import "./Movie.css";
 
 const apiBaseUrl = process.env.REACT_APP_API_URL;
@@ -52,7 +53,7 @@ const Movies = () => {
           dataLength={totalResults}
           next={changePageNum}
           hasMore={hasMore}
-          loader={<p> Please Wait </p>}
+          loader={<Loader />}
           style={{ overflow: "hidden" }}
           endMessage={<p>Yay! You have seen it all!</p>}
         >

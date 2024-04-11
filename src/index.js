@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import reportWebVitals from "./reportWebVitals";
+import ScrollToTop from "./helpers/ScrollToTop";
 import "remixicon/fonts/remixicon.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -13,7 +14,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        <ScrollToTop>
+          <App />
+        </ScrollToTop>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>

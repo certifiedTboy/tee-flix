@@ -10,3 +10,31 @@
   margin-top: -50px;
   margin-left: 30px;
 }
+
+.season,
+.episode {
+  color: #e4d804;
+}
+
+.season label,
+.episode label {
+  margin-right: 10px;
+}
+
+.season input,
+.episode input {
+  background-color: transparent;
+  color: rgb(255, 255, 254);
+  width: 35px;
+  text-align: center;
+}
+
+.season input:hover {
+  box-shadow: inset 0 0 5px 5px #888;
+  color: #e4d804;
+}
+
+.episode input:hover {
+  box-shadow: inset 0 0 5px 5px #888;
+  color: #e4d804;
+}
