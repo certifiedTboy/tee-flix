@@ -6,6 +6,7 @@ import useGetSeriesRecommendations from "../../hooks/useGetSeriesRecommendations
 import InfiniteScroll from "react-infinite-scroll-component";
 // import { GoogleLogin } from "@react-oauth/google";
 import MovieCard from "../Commons/MovieCard";
+import Loader from "../Commons/Loader";
 
 const SeriesDetails = () => {
   const [pageNum, setPageNum] = useState(1);
@@ -123,7 +124,7 @@ const SeriesDetails = () => {
         dataLength={totalResults}
         next={changePageNum}
         hasMore={hasMore}
-        loader={<p> Please Wait </p>}
+        loader={<Loader />}
         style={{ overflow: "hidden" }}
         endMessage={""}
       >
