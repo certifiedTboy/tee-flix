@@ -387,3 +387,9 @@
   background-color: transparent;
   color: #e4d804;
 }
+
+.stream-container {
+  height: 100vh !important;
+  position: absolute;
+  width: 100%;
+}

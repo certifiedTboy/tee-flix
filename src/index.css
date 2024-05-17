@@ -6,7 +6,6 @@
   font-family: "Poppins", sans-serif;
 }
 body {
-  min-height: 150vh;
   background: #1b252e;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
