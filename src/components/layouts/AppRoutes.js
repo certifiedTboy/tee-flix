@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 import TopratedMovies from "../Home/TopratedMovies";
 import Series from "../Series/Series";
 import Movies from "../movies/Movies";
+import FootballScreen from "../../screens/FootballScreen";
 
 const ErrorScreen = lazy(() => import("../../screens/ErrorScreen"));
 const SingleMovieScreen = lazy(() => import("../../screens/SingleMovieScreen"));
@@ -80,6 +81,15 @@ const AppRoutes = () => {
         element={
           <Suspense fallback={<></>}>
             <StreamingSeriesScreen />
+          </Suspense>
+        }
+      />
+
+      <Route
+        path="/football-match"
+        element={
+          <Suspense fallback={<></>}>
+            <FootballScreen />
           </Suspense>
         }
       />

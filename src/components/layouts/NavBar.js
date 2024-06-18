@@ -115,6 +115,16 @@ const NavBar = ({ setShowSearch, watchList }) => {
               </Link>
             </li>
 
+            {/* <li className="navbar-item">
+              <Link
+                className="navbar-link"
+                to="/football-match"
+                onClick={() => setShowSide((prev) => false)}
+              >
+                Football Match
+              </Link>
+            </li> */}
+
             <li className="navbar-item">
               <button
                 className="navbar-link btn"

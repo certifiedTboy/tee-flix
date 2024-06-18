@@ -19,7 +19,7 @@ const App = () => {
 
   return (
     <>
-      <GoogleAdsense />
+      {/* <GoogleAdsense /> */}
       <Layout scrollTop={scrollTop} />
     </>
   );
