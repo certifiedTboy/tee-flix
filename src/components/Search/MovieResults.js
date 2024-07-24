@@ -37,7 +37,7 @@ const MovieResults = ({ filterCtg }) => {
       {" "}
       <div className="row movies-grid">
         {movieData?.length > 0 ? (
-          movieData.map((movie) => (
+          movieData?.map((movie) => (
             <MovieCard {...movie} key={movie.id} filterCtg={filterCtg} />
           ))
         ) : (
