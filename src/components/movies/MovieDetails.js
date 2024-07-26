@@ -32,7 +32,7 @@ const MovieDetails = () => {
               <div className="details-content">
                 {movieData?.production_companies && (
                   <h5 className="director">
-                    {movieData?.production_companies[0].name}
+                    {movieData?.production_companies[0]?.name}
                   </h5>
                 )}
                 <h2 className="title">{movieData?.title}</h2>
@@ -44,9 +44,9 @@ const MovieDetails = () => {
                     </li>
                     <li className="category">
                       <span>
-                        {movieData && movieData.genres
+                        {movieData && movieData?.genres
                           ? movieData.genres
-                              .map((genre) => genre.name)
+                              .map((genre) => genre?.name)
                               .join(", ")
                           : null}
                       </span>
