@@ -34,7 +34,7 @@ const SeriesDetails = () => {
     );
   }, [seriesId]);
 
-  console.log(movieData);
+  
 
   const changePageNum = () => {
     if (hasMore) {
