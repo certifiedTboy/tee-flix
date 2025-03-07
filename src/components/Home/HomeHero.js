@@ -10,10 +10,16 @@ const HomeHero = () => {
           <h2 className="title">
             Unlimited {<span>Movie</span>} , TVs Shows, & More.
           </h2>
-          <Link className="btn" to="/movies">
-            <i className="ri-arrow-right-line"></i>
-            Explore Movies
-          </Link>
+          <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+            <Link className="btn" to="/movies">
+              <i className="ri-arrow-right-line"></i>
+              Explore Movies
+            </Link>
+            <Link className="btn" to="/movies">
+              <i className="ri-arrow-right-line"></i>
+              Download App
+            </Link>
+          </div>
         </div>
       </div>
     </header>

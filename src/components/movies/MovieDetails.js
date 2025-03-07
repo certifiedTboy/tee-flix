@@ -1,13 +1,19 @@
-import { Fragment, useEffect } from "react";
+import { useState, Fragment, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useGetSingleMovie from "../../hooks/useGetSingleMovie";
+import { useGetMovieThrillersMutation } from "../../lib/apis/generalApis";
+import TrailerModal from "../common/TrailerModal";
 // import { GoogleLogin } from "@react-oauth/google";
 import MovieCard from "../Commons/MovieCard";
 import { formatRuntime } from "../../helpers/helpers";
 
 const MovieDetails = () => {
+  const [trailer, setTrailer] = useState("");
+  const [open, setOpen] = useState(false);
   const [getMovieDetails, movieData] = useGetSingleMovie();
+  const [getMovieThrillers, { data }] = useGetMovieThrillersMutation();
+
   const params = useParams();
   const { movieId } = params;
 
@@ -17,9 +23,40 @@ const MovieDetails = () => {
     );
   }, [movieId]);
 
+  useEffect(() => {
+    if (movieData) {
+      getMovieThrillers(movieData?.id);
+    }
+  }, [movieData]);
+
+  useEffect(() => {
+    // find main trailler key
+    if (data && data?.results?.length > 0) {
+      const trailerKey = data?.results.find(
+        (result) => result?.type === "Trailer"
+      )?.key;
+      // const keys = data?.results.map((result) => result?.key);
+
+      if (trailerKey) {
+        return setTrailer(trailerKey);
+      }
+
+      // if ((keys && keys.length > 0) || trailerKey) {
+      //   // setPlayList([trailerKey, ...keys]);
+      // }
+    }
+  }, [data]);
+
   return (
     <Fragment>
-      <header className="page-header movie-details-header intro">
+      {open && (
+        <TrailerModal
+          trailerKey={trailer}
+          open={open}
+          setOpenModal={() => setOpen(false)}
+        />
+      )}
+      <section className="page-header movie-details-header intro">
         <div className="container">
           {movieData && (
             <div className="movie-details">
@@ -64,18 +101,29 @@ const MovieDetails = () => {
                   </ul>
                 </div>
                 <p className="desc">{movieData?.overview}</p>
-                <Link
-                  className="btn watch-btn"
-                  to={`/movies/${movieData?.id}/stream`}
-                >
-                  <i className="ri-play-fill"></i>
-                  Watch Now
-                </Link>
+
+                <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                  <Link
+                    className="btn watch-btn"
+                    to={`/movies/${movieData?.id}/stream`}
+                  >
+                    <i className="ri-play-fill"></i>
+                    Watch Now
+                  </Link>
+                  <Link
+                    className="btn watch-btn"
+                    to="#"
+                    onClick={() => setOpen(true)}
+                  >
+                    <i className="ri-play-fill"></i>
+                    Watch Trailer
+                  </Link>
+                </div>
               </div>
             </div>
           )}
         </div>
-      </header>
+      </section>
 
       <div style={{ textAlign: "center", marginBottom: "20px" }}>
         <h1 style={{ color: "#fff" }}>Recommended Movies</h1>

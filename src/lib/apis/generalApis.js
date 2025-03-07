@@ -7,6 +7,12 @@ export const generalApis = createApi({
   reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://api.themoviedb.org/3",
+    prepareHeaders: async (headers, { getState }) => {
+      const token = process.env.REACT_APP_API_TOKEN;
+
+      headers.set("Authorization", `Bearer ${token}`);
+      return headers;
+    },
   }),
   endpoints: (builder) => ({
     getGenres: builder.mutation({
@@ -21,7 +27,25 @@ export const generalApis = createApi({
         } catch (error) {}
       },
     }),
+
+    getMovieThrillers: builder.mutation({
+      query: (movieId) => ({
+        url: `/movie/${movieId}/videos`,
+        method: "GET",
+      }),
+    }),
+
+    getSeriesThrillers: builder.mutation({
+      query: (seriesId) => ({
+        url: `/tv/${seriesId}/videos`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useGetGenresMutation } = generalApis;
+export const {
+  useGetGenresMutation,
+  useGetMovieThrillersMutation,
+  useGetSeriesThrillersMutation,
+} = generalApis;

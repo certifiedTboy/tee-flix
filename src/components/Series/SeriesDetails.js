@@ -3,15 +3,21 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useGetSingleMovie from "../../hooks/useGetSingleMovie";
 import useGetSeriesRecommendations from "../../hooks/useGetSeriesRecommendations";
+import { useGetSeriesThrillersMutation } from "../../lib/apis/generalApis";
+import TrailerModal from "../common/TrailerModal";
 import InfiniteScroll from "react-infinite-scroll-component";
 // import { GoogleLogin } from "@react-oauth/google";
 import MovieCard from "../Commons/MovieCard";
 import Loader from "../Commons/Loader";
 
 const SeriesDetails = () => {
+  const [trailer, setTrailer] = useState("");
+  const [open, setOpen] = useState(false);
   const [pageNum, setPageNum] = useState(1);
 
   const [getMovieDetails, movieData] = useGetSingleMovie();
+
+  const [getSeriesThrillers, { data }] = useGetSeriesThrillersMutation();
 
   const [
     getSeriesRecommendations,
@@ -34,8 +40,6 @@ const SeriesDetails = () => {
     );
   }, [seriesId]);
 
-  
-
   const changePageNum = () => {
     if (hasMore) {
       setPageNum(pageNum + 1);
@@ -48,8 +52,39 @@ const SeriesDetails = () => {
     );
   }, [pageNum]);
 
+  useEffect(() => {
+    if (movieData) {
+      getSeriesThrillers(movieData?.id);
+    }
+  }, [movieData]);
+
+  useEffect(() => {
+    // find main trailler key
+    if (data && data?.results?.length > 0) {
+      const trailerKey = data?.results.find(
+        (result) => result?.type === "Trailer"
+      )?.key;
+      // const keys = data?.results.map((result) => result?.key);
+
+      if (trailerKey) {
+        return setTrailer(trailerKey);
+      }
+
+      // if ((keys && keys.length > 0) || trailerKey) {
+      //   // setPlayList([trailerKey, ...keys]);
+      // }
+    }
+  }, [data]);
+
   return (
     <Fragment>
+      {open && (
+        <TrailerModal
+          trailerKey={trailer}
+          open={open}
+          setOpenModal={() => setOpen(false)}
+        />
+      )}
       <header className="page-header movie-details-header intro">
         <div className="container">
           {movieData && (
@@ -101,13 +136,24 @@ const SeriesDetails = () => {
                   </ul>
                 </div>
                 <p className="desc">{movieData?.overview}</p>
-                <Link
-                  className="btn watch-btn"
-                  to={`/series/${movieData?.id}/stream`}
-                >
-                  <i className="ri-play-fill"></i>
-                  Watch Now
-                </Link>
+                <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                  {" "}
+                  <Link
+                    className="btn watch-btn"
+                    to={`/series/${movieData?.id}/stream`}
+                  >
+                    <i className="ri-play-fill"></i>
+                    Watch Now
+                  </Link>
+                  <Link
+                    className="btn watch-btn"
+                    to="#"
+                    onClick={() => setOpen(true)}
+                  >
+                    <i className="ri-play-fill"></i>
+                    Watch Trailer
+                  </Link>{" "}
+                </div>
               </div>
             </div>
           )}
