@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useGetSingleMovie from "../../hooks/useGetSingleMovie";
 import { useGetMovieThrillersMutation } from "../../lib/apis/generalApis";
-import TrailerModal from "../common/TrailerModal";
+import TrailerModal from "../Commons/TrailerModal";
 // import { GoogleLogin } from "@react-oauth/google";
 import MovieCard from "../Commons/MovieCard";
 import { formatRuntime } from "../../helpers/helpers";
