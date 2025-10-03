@@ -26,38 +26,44 @@ const Layout = ({ scrollTop }) => {
     };
   } else if (pathname === `/movies`) {
     titleData = {
-      title: `Tee Flix - Movies`,
+      title: `Movies`,
       metaDescription: `All latest movies available for streaming on tee flix streaming platform`,
     };
   } else if (pathname === `/series`) {
     titleData = {
-      title: `Tee Flix - Series and tv shows`,
+      title: `Series and tv shows`,
       metaDescription: `All latest Series and tv shows available for streaming on tee flix streaming platform`,
+    };
+  } else if (pathname === "/downloads") {
+    titleData = {
+      title: "Download App",
+      metaDescription:
+        "Download the Tee Flix app to enjoy unlimited movies and series on your device.",
     };
   } else if (pathname === `/movies/${pathname.split("/")[2]}`) {
     titleData = {
-      title: `Tee Flix - ${pathname.split("/")[2]}`,
+      title: `${pathname.split("/")[2]}`,
       metaDescription: `All latest movies available for streaming on tee flix streaming platform`,
     };
   } else if (pathname === `/series/${pathname.split("/")[2]}`) {
     titleData = {
-      title: `Tee Flix - ${pathname.split("/")[2]}`,
+      title: `${pathname.split("/")[2]}`,
       metaDescription: `All latest series available for streaming on tee flix streaming platform`,
     };
   } else if (pathname === `/search/${pathname.split("/")[2]}`) {
     titleData = {
-      title: `Tee Flix - Searched ${pathname.split("/")[2]}`,
+      title: `Searched ${pathname.split("/")[2]}`,
       metaDescription: `${pathname.split("/")[2]}`,
     };
   } else if (pathname === `/movies/${pathname.split("/")[2]}/stream`) {
     titleData = {
-      title: `Tee Flix - streaming`,
-      metaDescription: `streaming ${pathname.split("/")[2]}`,
+      title: `Streaming ${pathname.split("/")[2]}`,
+      metaDescription: `Streaming ${pathname.split("/")[2]}`,
     };
   } else if (pathname === `/series/${pathname.split("/")[2]}/stream`) {
     titleData = {
-      title: `Tee Flix - streaming`,
-      metaDescription: `streaming ${pathname.split("/")[2]}`,
+      title: `Streaming ${pathname.split("/")[2]}`,
+      metaDescription: `Streaming ${pathname.split("/")[2]}`,
     };
   } else {
     titleData = {

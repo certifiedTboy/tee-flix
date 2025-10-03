@@ -86,3 +86,41 @@ a,
 .results-sec .section-title .title {
   text-transform: capitalize;
 }
+
+iframe[src*="vidsrc.to"] + div {
+  display: none !important;
+}
+
+.app-download-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.app-download-container h1 {
+  color: #e4d804;
+  font-size: 2rem;
+}
+
+.intro-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.app-download-container p {
+  color: #fff;
+  font-size: 1rem;
+}
+
+.download-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.download-links img {
+  width: 150px;
+}

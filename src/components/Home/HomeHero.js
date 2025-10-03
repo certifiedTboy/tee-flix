@@ -17,8 +17,9 @@ const HomeHero = () => {
             </Link>
             <Link
               className="btn"
-              to="https://drive.google.com/uc?id=1V2VTo0Gmy9yTBnnZrH4E8PrDjhlrt-MK&export=download"
-              download={true}
+              to={"/downloads"}
+              // to="https://drive.google.com/uc?id=1V2VTo0Gmy9yTBnnZrH4E8PrDjhlrt-MK&export=download"
+              // download={true}
             >
               <i className="ri-arrow-right-line"></i>
               Download App

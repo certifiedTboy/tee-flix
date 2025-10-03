@@ -5,6 +5,7 @@ import TopratedMovies from "../Home/TopratedMovies";
 import Series from "../Series/Series";
 import Movies from "../movies/Movies";
 import FootballScreen from "../../screens/FootballScreen";
+import AppDownloadScreen from "../../screens/AppDownloadScreen";
 import AdultMovieScreen from "../../screens/AdultMovieScreen";
 
 const ErrorScreen = lazy(() => import("../../screens/ErrorScreen"));
@@ -28,6 +29,7 @@ const AppRoutes = () => {
     <Routes>
       <Route path="*" element={<ErrorScreen />} />
       <Route path="/" element={<Navigate to="/home" replace={true} />} exact />
+      <Route path="/downloads" element={<AppDownloadScreen />} />
       <Route
         path="/"
         element={
