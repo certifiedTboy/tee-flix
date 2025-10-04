@@ -13,7 +13,10 @@ const AppDownloadScreen = () => {
         </p>
 
         <div className="download-links">
-          <Link>
+          <Link
+            to="https://drive.google.com/uc?id=1Ff8HQLratZV8fVH6IuQ8DDTaOQl3XVOW&export=download"
+            download={true}
+          >
             <img src={android} alt="android" />
           </Link>
           <Link>
