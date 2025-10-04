@@ -19,7 +19,7 @@ const AppDownloadScreen = () => {
           >
             <img src={android} alt="android" />
           </Link>
-          <Link>
+          <Link to="/downloads/ios">
             <img src={ios} alt="ios" />
           </Link>
         </div>
