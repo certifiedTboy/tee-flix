@@ -9,21 +9,14 @@ const apiBaseUrl = process.env.REACT_APP_API_URL;
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Movies = () => {
-  const [
-    fetchMovieData,
-    movieData,
-    errorMessage,
-    isLoading,
-    hasMore,
-    totalResults,
-  ] = useHttp();
+  const [fetchMovieData, movieData, hasMore, totalResults] = useHttp();
 
   const [pageNum, setPageNum] = useState(1);
 
   const loadMovies = async () => {
     await fetchMovieData(
       `${apiBaseUrl}/movie/popular?api_key=${API_KEY}&page=${pageNum}`,
-      "fetch"
+      "fetch",
     );
   };
 

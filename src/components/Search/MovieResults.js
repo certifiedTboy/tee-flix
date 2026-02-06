@@ -9,8 +9,7 @@ const MovieResults = ({ filterCtg }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   // use http custom hook to run search query
-  const [getMovieData, movieData, errorMessage, isLoading, _, totalPages] =
-    useHttp();
+  const [getMovieData, movieData, totalPages] = useHttp();
 
   const params = useParams();
 
@@ -20,7 +19,7 @@ const MovieResults = ({ filterCtg }) => {
   const onSearchMovieData = async () => {
     await getMovieData(
       `${process.env.REACT_APP_API_URL}/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${searchQuery}&page=${currentPage}`,
-      "search"
+      "search",
     );
   };
 

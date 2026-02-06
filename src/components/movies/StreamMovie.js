@@ -8,6 +8,7 @@ const StreaMovie = () => {
   return (
     <div className="stream-container">
       <iframe
+        title={`Streaming Movie ${movieId}`}
         width="100%"
         height="100%"
         src={`https://vidsrc.xyz/embed/movie/${movieId}`}

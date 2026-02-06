@@ -6,19 +6,12 @@ const TopratedMovies = () => {
   const apiBaseUrl = process.env.REACT_APP_API_URL;
   const API_KEY = process.env.REACT_APP_API_KEY;
 
-  const [
-    fetchMovieData,
-    movieData,
-    errorMessage,
-    isLoading,
-    hasMore,
-    totalResults,
-  ] = useHttp();
+  const [fetchMovieData, movieData] = useHttp();
 
   useEffect(() => {
     fetchMovieData(
       `${apiBaseUrl}/movie/popular?api_key=${API_KEY}&page=1`,
-      "not_fetch"
+      "not_fetch",
     );
   }, []);
 

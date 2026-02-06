@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Layout from "./components/layouts/Layout";
-import GoogleAdsense from "./helpers/GoogleAdsense";
 
 const App = () => {
   const [scrollTop, setScrollTop] = useState(0);
@@ -19,7 +18,6 @@ const App = () => {
 
   return (
     <>
-      {/* <GoogleAdsense /> */}
       <Layout scrollTop={scrollTop} />
     </>
   );

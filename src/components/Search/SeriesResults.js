@@ -4,14 +4,12 @@ import useSearchSeries from "../../hooks/useSearchSeries";
 import Pagination from "../Commons/Pagination";
 import MovieCard from "../Commons/MovieCard";
 import NoSearchResult from "./NoSearchResult";
-import SearchResult from "./SearchResult";
 
 const SeriesResults = ({ filterCtg }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   // use http custom hook to run search query
-  const [getMovieData, movieData, errorMessage, isLoading, totalPages] =
-    useSearchSeries();
+  const [getMovieData, movieData, totalPages] = useSearchSeries();
 
   const params = useParams();
 
@@ -20,7 +18,7 @@ const SeriesResults = ({ filterCtg }) => {
   // search movie function
   const onSearchMovieData = async () => {
     await getMovieData(
-      `${process.env.REACT_APP_API_URL}/search/tv?include_adult=true&language=en-US&query=${searchQuery}&page=${currentPage}`
+      `${process.env.REACT_APP_API_URL}/search/tv?include_adult=true&language=en-US&query=${searchQuery}&page=${currentPage}`,
     );
   };
 

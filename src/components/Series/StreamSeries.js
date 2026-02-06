@@ -13,6 +13,7 @@ const StreamSeries = () => {
   return (
     <div className="stream-container">
       <iframe
+        title={`Streaming Series ${seriesId} Season ${season} Episode ${episode}`}
         width="100%"
         height="100%"
         src={`https://vidsrc.pro/embed/tv/${seriesId}/${season}/${episode}`}

@@ -5,23 +5,16 @@ import MovieCard from "../Commons/MovieCard";
 import Loader from "../Commons/Loader";
 
 const apiBaseUrl = process.env.REACT_APP_API_URL;
-const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Series = () => {
-  const [
-    fetchMovieData,
-    movieData,
-    errorMessage,
-    isLoading,
-    hasMore,
-    totalResults,
-  ] = useGetSeriesMovie();
+  const [fetchMovieData, movieData, hasMore, totalResults] =
+    useGetSeriesMovie();
 
   const [pageNum, setPageNum] = useState(1);
 
   const loadMovie = async () => {
     await fetchMovieData(
-      `${apiBaseUrl}/tv/popular?language=en-US&page=${pageNum}`
+      `${apiBaseUrl}/tv/popular?language=en-US&page=${pageNum}`,
     );
   };
 
