@@ -124,3 +124,7 @@ iframe[src*="vidsrc.to"] + div {
 .download-links img {
   width: 150px;
 }
+
+.hello {
+  color: #e4d804;
+}
