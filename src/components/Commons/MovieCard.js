@@ -31,7 +31,7 @@ const MovieCard = (props) => {
                 props.filterCtg === "movies"
                   ? "movies"
                   : "series"
-              }/${props.id}`}
+              }/${props.id}/${props.title ? props.title : props?.name}`}
             >
               Details
             </Link>
@@ -47,8 +47,8 @@ const MovieCard = (props) => {
                   ? props.title.split("").slice(0, 20).join("") + "..."
                   : props.title
                 : props?.name?.length > 20
-                ? props.name.split("").slice(0, 20).join("") + "..."
-                : props.name}
+                  ? props.name.split("").slice(0, 20).join("") + "..."
+                  : props.name}
             </Link>
           </h5>
           <h6 className="year">

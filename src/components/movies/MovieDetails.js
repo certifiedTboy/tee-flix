@@ -19,7 +19,7 @@ const MovieDetails = () => {
 
   useEffect(() => {
     getMovieDetails(
-      `${process.env.REACT_APP_API_URL}/movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}&append_to_response=recommendations`
+      `${process.env.REACT_APP_API_URL}/movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}&append_to_response=recommendations`,
     );
   }, [movieId]);
 
@@ -33,7 +33,7 @@ const MovieDetails = () => {
     // find main trailler key
     if (data && data?.results?.length > 0) {
       const trailerKey = data?.results.find(
-        (result) => result?.type === "Trailer"
+        (result) => result?.type === "Trailer",
       )?.key;
       // const keys = data?.results.map((result) => result?.key);
 
@@ -105,7 +105,7 @@ const MovieDetails = () => {
                 <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
                   <Link
                     className="btn watch-btn"
-                    to={`/movies/${movieData?.id}/stream`}
+                    to={`/movies/${movieData?.id}/${movieData?.title}/stream`}
                   >
                     <i className="ri-play-fill"></i>
                     Watch Now

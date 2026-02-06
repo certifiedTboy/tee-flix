@@ -40,30 +40,40 @@ const Layout = ({ scrollTop }) => {
       metaDescription:
         "Download the Tee Flix app to enjoy unlimited movies and series on your device.",
     };
-  } else if (pathname === `/movies/${pathname.split("/")[2]}`) {
+  } else if (
+    pathname === `/movies/${pathname.split("/")[2]}/${pathname.split("/")[3]}`
+  ) {
     titleData = {
-      title: `${pathname.split("/")[2]}`,
-      metaDescription: `All latest movies available for streaming on tee flix streaming platform`,
+      title: `${decodeURIComponent(pathname.split("/")[3])}`,
+      metaDescription: `details about ${decodeURIComponent(pathname.split("/")[3])}`,
     };
-  } else if (pathname === `/series/${pathname.split("/")[2]}`) {
+  } else if (
+    pathname === `/series/${pathname.split("/")[2]}/${pathname.split("/")[3]}`
+  ) {
     titleData = {
-      title: `${pathname.split("/")[2]}`,
-      metaDescription: `All latest series available for streaming on tee flix streaming platform`,
+      title: `${decodeURIComponent(pathname.split("/")[3])}`,
+      metaDescription: `Details about ${decodeURIComponent(pathname.split("/")[3])}`,
     };
   } else if (pathname === `/search/${pathname.split("/")[2]}`) {
     titleData = {
       title: `Searched ${pathname.split("/")[2]}`,
       metaDescription: `${pathname.split("/")[2]}`,
     };
-  } else if (pathname === `/movies/${pathname.split("/")[2]}/stream`) {
+  } else if (
+    pathname ===
+    `/movies/${pathname.split("/")[2]}/${decodeURIComponent(pathname.split("/")[3])}/stream`
+  ) {
     titleData = {
-      title: `Streaming ${pathname.split("/")[2]}`,
-      metaDescription: `Streaming ${pathname.split("/")[2]}`,
+      title: `Streaming ${decodeURIComponent(pathname.split("/")[3])}`,
+      metaDescription: `Streaming ${decodeURIComponent(pathname.split("/")[3])}`,
     };
-  } else if (pathname === `/series/${pathname.split("/")[2]}/stream`) {
+  } else if (
+    pathname ===
+    `/series/${pathname.split("/")[2]}/${decodeURIComponent(pathname.split("/")[3])}/stream`
+  ) {
     titleData = {
-      title: `Streaming ${pathname.split("/")[2]}`,
-      metaDescription: `Streaming ${pathname.split("/")[2]}`,
+      title: `Streaming ${decodeURIComponent(pathname.split("/")[3])}`,
+      metaDescription: `Streaming ${decodeURIComponent(pathname.split("/")[3])}`,
     };
   } else {
     titleData = {

@@ -10,18 +10,18 @@ import AdultMovieScreen from "../../screens/AdultMovieScreen";
 
 const ErrorScreen = lazy(() => import("../../screens/ErrorScreen"));
 const SingleMovieScreen = lazy(() => import("../../screens/SingleMovieScreen"));
-const SingleSeriesScreen = lazy(() =>
-  import("../../screens/SingleSeriesScreen")
+const SingleSeriesScreen = lazy(
+  () => import("../../screens/SingleSeriesScreen"),
 );
 const HomeScreen = lazy(() => import("../../screens/HomeScreen"));
-const SearchResultScreen = lazy(() =>
-  import("../../screens/SearchResultScreen")
+const SearchResultScreen = lazy(
+  () => import("../../screens/SearchResultScreen"),
 );
-const StreamingMovieScreen = lazy(() =>
-  import("../../screens/StreamingMovieScreen")
+const StreamingMovieScreen = lazy(
+  () => import("../../screens/StreamingMovieScreen"),
 );
-const StreamingSeriesScreen = lazy(() =>
-  import("../../screens/StreamingSeriesScreen")
+const StreamingSeriesScreen = lazy(
+  () => import("../../screens/StreamingSeriesScreen"),
 );
 
 const AppRoutes = () => {
@@ -34,8 +34,7 @@ const AppRoutes = () => {
         path="/"
         element={
           <Suspense fallback={<></>}>
-            {" "}
-            <HomeScreen />{" "}
+            <HomeScreen />
           </Suspense>
         }
       >
@@ -46,19 +45,17 @@ const AppRoutes = () => {
       </Route>
 
       <Route
-        path="/movies/:movieId"
+        path="/movies/:movieId/:movieTitle"
         element={
           <Suspense fallback={<></>}>
-            {" "}
-            <SingleMovieScreen />{" "}
+            <SingleMovieScreen />
           </Suspense>
         }
       />
       <Route
-        path="/series/:seriesId"
+        path="/series/:seriesId/:seriesTitle"
         element={
           <Suspense fallback={<></>}>
-            {" "}
             <SingleSeriesScreen />
           </Suspense>
         }
@@ -67,13 +64,12 @@ const AppRoutes = () => {
         path="/search/:searchQuery"
         element={
           <Suspense fallback={<></>}>
-            {" "}
-            <SearchResultScreen />{" "}
+            <SearchResultScreen />
           </Suspense>
         }
       />
       <Route
-        path="/movies/:movieId/stream"
+        path="/movies/:movieId/:movieTitle/stream"
         element={
           <Suspense fallback={<></>}>
             <StreamingMovieScreen />
@@ -81,7 +77,7 @@ const AppRoutes = () => {
         }
       />
       <Route
-        path="/series/:seriesId/stream"
+        path="/series/:seriesId/:seriesTitle/stream"
         element={
           <Suspense fallback={<></>}>
             <StreamingSeriesScreen />

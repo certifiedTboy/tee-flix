@@ -32,11 +32,11 @@ const SeriesDetails = () => {
 
   useEffect(() => {
     getMovieDetails(
-      `${process.env.REACT_APP_API_URL}/tv/${seriesId}?language=en-US`
+      `${process.env.REACT_APP_API_URL}/tv/${seriesId}?language=en-US`,
     );
 
     getSeriesRecommendations(
-      `${process.env.REACT_APP_API_URL}/tv/${seriesId}/recommendations?language=en-US`
+      `${process.env.REACT_APP_API_URL}/tv/${seriesId}/recommendations?language=en-US`,
     );
   }, [seriesId]);
 
@@ -48,7 +48,7 @@ const SeriesDetails = () => {
 
   useEffect(() => {
     getSeriesRecommendations(
-      `${process.env.REACT_APP_API_URL}/tv/${seriesId}/recommendations?language=en-US&page=${pageNum}`
+      `${process.env.REACT_APP_API_URL}/tv/${seriesId}/recommendations?language=en-US&page=${pageNum}`,
     );
   }, [pageNum]);
 
@@ -62,7 +62,7 @@ const SeriesDetails = () => {
     // find main trailler key
     if (data && data?.results?.length > 0) {
       const trailerKey = data?.results.find(
-        (result) => result?.type === "Trailer"
+        (result) => result?.type === "Trailer",
       )?.key;
       // const keys = data?.results.map((result) => result?.key);
 
@@ -140,7 +140,7 @@ const SeriesDetails = () => {
                   {" "}
                   <Link
                     className="btn watch-btn"
-                    to={`/series/${movieData?.id}/stream`}
+                    to={`/series/${movieData?.id}/${movieData?.name}/stream`}
                   >
                     <i className="ri-play-fill"></i>
                     Watch Now
