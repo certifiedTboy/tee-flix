@@ -14,7 +14,7 @@ const Layout = ({ scrollTop }) => {
   const { pathname } = location;
 
   const [showSearch, setShowSearch] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [setCurrentPage] = useState(1);
 
   let titleData;
 
@@ -61,7 +61,7 @@ const Layout = ({ scrollTop }) => {
     };
   } else if (
     pathname ===
-    `/movies/${pathname.split("/")[2]}/${decodeURIComponent(pathname.split("/")[3])}/stream`
+    `/movies/${pathname.split("/")[2]}/${pathname.split("/")[3]}/stream`
   ) {
     titleData = {
       title: `Streaming ${decodeURIComponent(pathname.split("/")[3])}`,
@@ -69,7 +69,7 @@ const Layout = ({ scrollTop }) => {
     };
   } else if (
     pathname ===
-    `/series/${pathname.split("/")[2]}/${decodeURIComponent(pathname.split("/")[3])}/stream`
+    `/series/${pathname.split("/")[2]}/${pathname.split("/")[3]}/stream`
   ) {
     titleData = {
       title: `Streaming ${decodeURIComponent(pathname.split("/")[3])}`,
