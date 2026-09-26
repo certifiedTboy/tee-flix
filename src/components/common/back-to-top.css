@@ -1,0 +1,56 @@
+.fadeOut {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  transition:
+    width 0.5s 0.5s,
+    height 0.5s 0.5s,
+    opacity 0.5s;
+}
+.fadeIn {
+  opacity: 1;
+  transition:
+    width 0.5s,
+    height 0.5s,
+    opacity 0.5s 0.5s;
+}
+
+.back-to-top {
+  bottom: 15px;
+  font-size: 22px;
+  height: 44px;
+  padding: 8px 0;
+  position: fixed;
+  right: 15px;
+  text-align: center;
+  width: 44px;
+  z-index: 9;
+}
+
+.btn2 {
+  border: 2px solid transparent;
+  border-radius: 0;
+  color: #e4d804;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  transition: 0.3s ease-out;
+  -webkit-transition: 0.3s ease-out;
+  -moz-transition: 0.3s ease-out;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.object {
+  animation: MoveUpDown 1s linear infinite;
+  /* position: absolute; */
+}
+
+@keyframes MoveUpDown {
+  0%,
+  0% {
+    left: 88%;
+  }
+  0% {
+    right: 30px;
+  }
+}

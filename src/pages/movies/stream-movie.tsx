@@ -1,0 +1,20 @@
+import { useParams } from "react-router-dom";
+
+const StreaMovie = () => {
+  const params = useParams();
+
+  const { movieId } = params;
+
+  return (
+    <div className="stream-container">
+      <iframe
+        title={`Streaming Movie ${movieId}`}
+        width="100%"
+        height="100%"
+        src={`https://vidsrc.mov/embed/movie/${movieId}`}
+      ></iframe>
+    </div>
+  );
+};
+
+export default StreaMovie;

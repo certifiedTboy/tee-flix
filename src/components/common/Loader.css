@@ -1,0 +1,20 @@
+.loader {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 6px solid #e4d804;
+  border-top: 6px solid transparent;
+  animation: rotate 1.5s infinite linear;
+  display: flex;
+  margin: 0px auto;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background: #1b252e;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+a,
+.link {
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+button,
+.btn,
+input,
+.input,
+textarea,
+.textarea {
+  display: inline-block;
+  border: none;
+  outline: none;
+}
+button,
+.btn,
+a,
+.link {
+  cursor: pointer;
+}
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.page-header {
+  padding-top: 100px;
+}
+
+/* not found  */
+.notFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  width: 80vw;
+  padding-top: 150px;
+  margin: 0 auto 5rem;
+}
+.notFound h2 {
+  color: #fff;
+}
+.imgNotFound {
+  width: 50%;
+  margin-bottom: 1em;
+  margin-bottom: 2rem;
+}
+.backToHome {
+  color: #fff;
+  background-color: #e4d804;
+  border: 1px solid #e4d804;
+  padding: 0.7em 1.5em;
+  text-decoration: none;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.results-sec {
+  padding: 6rem 0 4rem;
+  background: url("./Assets/background.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.results-sec .section-title .title {
+  text-transform: capitalize;
+}
+
+iframe[src*="vidsrc.to"] + div {
+  display: none !important;
+}
+
+.app-download-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.app-download-container h1 {
+  color: #e4d804;
+  font-size: 2rem;
+}
+
+.intro-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.app-download-container p {
+  color: #fff;
+  font-size: 1rem;
+}
+
+.download-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.download-links img {
+  width: 150px;
+}
+
+.hello {
+  color: #e4d804;
+}
