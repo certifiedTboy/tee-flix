@@ -28,7 +28,7 @@ const Footer = () => {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <i className="ri-tiktok-line"></i>
+                    <i className="ri-pinterest-line"></i>
                   </a>
                 </li>
                 <li>
